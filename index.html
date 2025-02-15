@@ -4,341 +4,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Just One Bite - Fresh Baked Cookies</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap');
-        
-        :root {
-            --primary-color: #8A5A44;
-            --secondary-color: #6A3E2A;
-            --background-gradient: linear-gradient(135deg, #F5E6CC, #FFD1DC);
-            --glass-background: rgba(255, 255, 255, 0.9);
-            --glass-border: rgba(255, 255, 255, 0.3);
-            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            --text-color: #4A4A4A;
-            --text-color-light: #ffffff;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--background-gradient);
-            text-align: center;
-            padding: 20px;
-            color: var(--text-color);
-            margin: 0;
-            transition: background 0.5s ease;
-        }
-
-        .logo {
-            width: 150px;
-            margin-bottom: 10px;
-            border-radius: 50%;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .header {
-            font-size: 2.5em;
-            font-weight: bold;
-            animation: fadeIn 1s ease-in-out;
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-color);
-        }
-
-        .subheader {
-            font-size: 1.2em;
-            margin-top: -10px;
-            color: var(--primary-color);
-            animation: fadeIn 1.5s ease-in-out;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .cookie-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .cookie {
-            width: 160px;
-            height: 160px;
-            border-radius: 20px;
-            background: var(--glass-background);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2em;
-            font-weight: bold;
-            color: white;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            position: relative;
-            flex-direction: column;
-            box-shadow: var(--glass-shadow);
-            padding: 10px;
-            cursor: pointer;
-        }
-
-        .cookie img {
-            width: 100%;
-            height: 100%;
-            border-radius: 10px;
-            object-fit: cover;
-        }
-
-        .cookie span {
-            margin-top: 10px;
-            font-size: 1.2em;
-            font-family: 'Dancing Script', cursive;
-            color: var(--primary-color);
-            text-align: center;
-        }
-
-        .cookie:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .cta {
-            margin-top: 30px;
-            font-size: 1.2em;
-            animation: fadeIn 2s ease-in-out;
-        }
-
-        .order-btn {
-            background: var(--primary-color);
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            font-size: 1em;
-            cursor: pointer;
-            border-radius: 10px;
-            transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
-            margin-top: 10px;
-        }
-
-        .order-btn:hover {
-            background: var(--secondary-color);
-            transform: scale(1.05);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        footer {
-            margin-top: 50px;
-            padding: 20px;
-            background: var(--glass-background);
-            backdrop-filter: blur(10px);
-            border-radius: 10px;
-            box-shadow: var(--glass-shadow);
-        }
-
-        footer a {
-            color: var(--primary-color);
-            text-decoration: none;
-            margin: 0 10px;
-            font-size: 1.2em;
-        }
-
-        footer a:hover {
-            color: var(--secondary-color);
-        }
-
-        /* Modal Styling */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            backdrop-filter: blur(5px);
-        }
-
-        .modal-content {
-            background: var(--glass-background);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 15px;
-            max-width: 400px;
-            text-align: center;
-            box-shadow: var(--glass-shadow);
-            position: relative;
-            border: 1px solid var(--glass-border);
-            animation: slideUp 0.5s ease-in-out;
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .modal-content img {
-            width: 100px;
-            height: 100px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-        }
-
-        .modal-content h2 {
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-            font-size: 1.8em;
-        }
-
-        .modal-content p {
-            font-size: 1em;
-            color: var(--text-color);
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.5em;
-            cursor: pointer;
-            color: var(--primary-color);
-            transition: color 0.3s ease-in-out;
-        }
-
-        .close-btn:hover {
-            color: var(--secondary-color);
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <img src="logo.png" alt="Just One Bite Logo" class="logo">
-    <div class="header">Just One Bite 🍪</div>
-    <div class="subheader">Freshly baked cookies, just for you! 🍪✨</div>
-    
-    <div class="cookie-container">
-        <!-- Dark Choco Cookie -->
-        <div class="cookie" onclick="openModal('dark-choco')">
-            <img src="dark-choco.png" alt="Dark Choco">
-            <span>Dark Choco</span>
+    <div class="container">
+        <img src="logo.png" alt="Just One Bite Logo" class="logo">
+        <div class="header">Just One Bite 🍪</div>
+        <div class="subheader">Freshly baked cookies, just for you! 🍪✨</div>
+        
+        <div class="cookie-container">
+            <!-- Dark Choco Cookie -->
+            <div class="cookie" onclick="openModal('dark-choco')">
+                <img src="dark-choco.png" alt="Dark Choco">
+                <span>Dark Choco</span>
+            </div>
+            <!-- Red Velvet Cookie -->
+            <div class="cookie" onclick="openModal('red-velvet')">
+                <img src="red-velvet.png" alt="Red Velvet">
+                <span>Red Velvet</span>
+            </div>
+            <!-- Matcha Cookie -->
+            <div class="cookie" onclick="openModal('matcha')">
+                <img src="matcha.png" alt="Matcha">
+                <span>Matcha</span>
+            </div>
+            <!-- Original Cookie -->
+            <div class="cookie" onclick="openModal('original')">
+                <img src="original.png" alt="Original">
+                <span>Original</span>
+            </div>
+            <!-- Pinky Cookie -->
+            <div class="cookie" onclick="openModal('pinky')">
+                <img src="pinky.png" alt="Pinky">
+                <span>Pinky</span>
+            </div>
         </div>
-        <!-- Red Velvet Cookie -->
-        <div class="cookie" onclick="openModal('red-velvet')">
-            <img src="red-velvet.png" alt="Red Velvet">
-            <span>Red Velvet</span>
-        </div>
-        <!-- Matcha Cookie -->
-        <div class="cookie" onclick="openModal('matcha')">
-            <img src="matcha.png" alt="Matcha">
-            <span>Matcha</span>
-        </div>
-        <!-- Original Cookie -->
-        <div class="cookie" onclick="openModal('original')">
-            <img src="original.png" alt="Original">
-            <span>Original</span>
-        </div>
-        <!-- Pinky Cookie -->
-        <div class="cookie" onclick="openModal('pinky')">
-            <img src="pinky.png" alt="Pinky">
-            <span>Pinky</span>
-        </div>
-    </div>
-    
-    <div class="cta">Ready to taste happiness? Order now! 👇</div>
-    <button class="order-btn" onclick="window.open('https://www.instagram.com/direct/t/17846565927345485', '_blank')">Order via DM</button>
+        
+        <div class="cta">Ready to taste happiness? Order now! 👇</div>
+        <button class="order-btn">Order via DM</button>
 
-    <!-- Modals -->
-    <!-- Dark Choco Modal -->
-    <div id="dark-choco-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('dark-choco')">&times;</span>
-            <img src="dark-choco.png" alt="Dark Choco">
-            <h2>Dark Choco</h2>
-            <p>Rich and decadent dark chocolate cookies with a hint of sea salt. Perfect for chocolate lovers!</p>
+        <!-- Modals -->
+        <!-- Dark Choco Modal -->
+        <div id="dark-choco-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal('dark-choco')">&times;</span>
+                <img src="dark-choco.png" alt="Dark Choco">
+                <h2>Dark Choco</h2>
+                <p>Rich and decadent dark chocolate cookies with a hint of sea salt. Perfect for chocolate lovers!</p>
+            </div>
         </div>
-    </div>
-    <!-- Red Velvet Modal -->
-    <div id="red-velvet-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('red-velvet')">&times;</span>
-            <img src="red-velvet.png" alt="Red Velvet">
-            <h2>Red Velvet</h2>
-            <p>Soft and chewy red velvet cookies with a creamy white chocolate drizzle. A classic favorite!</p>
+        <!-- Red Velvet Modal -->
+        <div id="red-velvet-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal('red-velvet')">&times;</span>
+                <img src="red-velvet.png" alt="Red Velvet">
+                <h2>Red Velvet</h2>
+                <p>Soft and chewy red velvet cookies with a creamy white chocolate drizzle. A classic favorite!</p>
+            </div>
         </div>
-    </div>
-    <!-- Matcha Modal -->
-    <div id="matcha-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('matcha')">&times;</span>
-            <img src="matcha.png" alt="Matcha">
-            <h2>Matcha</h2>
-            <p>Delicate matcha green tea cookies with a subtle sweetness. A refreshing treat!</p>
+        <!-- Matcha Modal -->
+        <div id="matcha-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal('matcha')">&times;</span>
+                <img src="matcha.png" alt="Matcha">
+                <h2>Matcha</h2>
+                <p>Delicate matcha green tea cookies with a subtle sweetness. A refreshing treat!</p>
+            </div>
         </div>
-    </div>
-    <!-- Original Modal -->
-    <div id="original-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('original')">&times;</span>
-            <img src="original.png" alt="Original">
-            <h2>Original</h2>
-            <p>Classic buttery cookies with a soft center and crispy edges. Simple yet irresistible!</p>
+        <!-- Original Modal -->
+        <div id="original-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal('original')">&times;</span>
+                <img src="original.png" alt="Original">
+                <h2>Original</h2>
+                <p>Classic buttery cookies with a soft center and crispy edges. Simple yet irresistible!</p>
+            </div>
         </div>
-    </div>
-    <!-- Pinky Modal -->
-    <div id="pinky-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('pinky')">&times;</span>
-            <img src="pinky.png" alt="Pinky">
-            <h2>Pinky</h2>
-            <p>Fun and fruity pink cookies with a burst of strawberry flavor. Perfect for a sweet treat!</p>
+        <!-- Pinky Modal -->
+        <div id="pinky-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal('pinky')">&times;</span>
+                <img src="pinky.png" alt="Pinky">
+                <h2>Pinky</h2>
+                <p>Fun and fruity pink cookies with a burst of strawberry flavor. Perfect for a sweet treat!</p>
+            </div>
         </div>
+
+        <footer>
+            <p>Follow us on:
+                <a href="https://instagram.com/justonebiteee_" target="_blank">Instagram</a>
+
+            </p>
+            <p>Contact us: <a href="mailto:sweetsmakeyouhappier12@gmail.com">sweetsmakeyouhappier12@gmail.com</a></p>
+        </footer>
     </div>
 
-    <footer>
-        <p>Follow us on:
-            <a href="https://instagram.com/justonebiteee_" target="_blank">Instagram</a>
-
-        </p>
-        <p>Contact us: <a href="mailto:sweetsmakeyouhappier12@gmail.com">sweetsmakeyouhappier12@gmail.com</a></p>
-    </footer>
-
-    <script>
-        // Function to open modal
-        function openModal(cookieType) {
-            document.getElementById(`${cookieType}-modal`).style.display = 'flex';
-        }
-
-        // Function to close modal
-        function closeModal(cookieType) {
-            document.getElementById(`${cookieType}-modal`).style.display = 'none';
-        }
-
-        // Close modal if clicked outside the modal content
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
