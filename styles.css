@@ -6,45 +6,53 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    margin-top: 50px;
 }
 
 .logo {
-    width: 120px; /* Ukuran logo lebih kecil untuk mobile */
+    width: 150px;
     margin-bottom: 20px;
     border-radius: 50%;
     animation: float 3s ease-in-out infinite;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .header {
     font-family: 'Pacifico', cursive;
-    font-size: 2.5em; /* Ukuran font lebih kecil untuk mobile */
+    font-size: 3em;
     color: #8A5A44;
     margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .subheader {
-    font-size: 1em; /* Ukuran font lebih kecil untuk mobile */
+    font-size: 1.2em;
     color: #8A5A44;
     margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .cookie-container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 15px; /* Jarak antar cookie lebih kecil untuk mobile */
-    margin-top: 20px;
+    gap: 20px;
+    margin-top: 30px;
 }
 
 .cookie {
-    width: 120px; /* Ukuran cookie lebih kecil untuk mobile */
-    height: 120px;
+    width: 150px;
+    height: 150px;
     border-radius: 15px;
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
@@ -54,7 +62,8 @@ body {
     justify-content: center;
     flex-direction: column;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .cookie img {
@@ -62,52 +71,64 @@ body {
     height: 100%;
     border-radius: 10px;
     object-fit: cover;
+    transition: transform 0.6s ease;
 }
 
 .cookie span {
     margin-top: 10px;
     font-family: 'Pacifico', cursive;
-    font-size: 1em; /* Ukuran font lebih kecil untuk mobile */
+    font-size: 1.2em;
     color: #8A5A44;
 }
 
 .cookie:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.cookie:hover img {
+    transform: rotate(360deg);
 }
 
 .cta {
-    font-size: 1em; /* Ukuran font lebih kecil untuk mobile */
-    margin-top: 20px;
+    font-size: 1.2em;
+    margin-top: 30px;
+    color: #8A5A44;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .order-btn {
     background: #8A5A44;
     color: white;
-    padding: 10px 20px; /* Padding lebih kecil untuk mobile */
+    padding: 15px 30px;
     border: none;
     border-radius: 10px;
-    font-size: 1em;
+    font-size: 1.2em;
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .order-btn:hover {
     background: #6A3E2A;
-    transform: scale(1.05);
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 footer {
-    margin-top: 30px;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.8);
+    margin-top: 50px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 footer a {
     color: #8A5A44;
     text-decoration: none;
-    margin: 0 10px;
-    font-size: 1em; /* Ukuran font lebih kecil untuk mobile */
+    margin: 0 15px;
+    font-size: 1.5em;
+    transition: color 0.3s ease;
 }
 
 footer a:hover {
@@ -127,33 +148,48 @@ footer a:hover {
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    opacity: 1;
 }
 
 .modal-content {
     background: white;
-    padding: 20px;
+    padding: 30px;
     border-radius: 15px;
-    max-width: 90%; /* Lebar modal lebih kecil untuk mobile */
+    max-width: 80%;
     text-align: center;
     position: relative;
+    transition: transform 0.3s ease;
+    transform: scale(0.7);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal.show .modal-content {
+    transform: scale(1);
 }
 
 .modal-content img {
-    width: 80px; /* Ukuran gambar lebih kecil untuk mobile */
-    height: 80px;
+    width: 100px;
+    height: 100px;
     border-radius: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .modal-content h2 {
     font-family: 'Pacifico', cursive;
     color: #8A5A44;
-    margin-bottom: 10px;
-    font-size: 1.5em; /* Ukuran font lebih kecil untuk mobile */
+    margin-bottom: 15px;
+    font-size: 1.8em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .modal-content p {
-    font-size: 0.9em; /* Ukuran font lebih kecil untuk mobile */
+    font-size: 1em;
     color: #4A4A4A;
     line-height: 1.5;
 }
@@ -162,7 +198,7 @@ footer a:hover {
     position: absolute;
     top: 10px;
     right: 10px;
-    font-size: 1.2em; /* Ukuran font lebih kecil untuk mobile */
+    font-size: 1.5em;
     cursor: pointer;
     color: #8A5A44;
     transition: color 0.3s ease;
@@ -181,33 +217,33 @@ footer a:hover {
 /* Media Queries for Mobile Devices */
 @media (max-width: 768px) {
     .logo {
-        width: 100px; /* Ukuran logo lebih kecil untuk mobile */
+        width: 100px;
     }
 
     .header {
-        font-size: 2em; /* Ukuran font lebih kecil untuk mobile */
+        font-size: 2em;
     }
 
     .subheader {
-        font-size: 0.9em; /* Ukuran font lebih kecil untuk mobile */
+        font-size: 0.9em;
     }
 
     .cookie {
-        width: 100px; /* Ukuran cookie lebih kecil untuk mobile */
+        width: 100px;
         height: 100px;
     }
 
     .cookie span {
-        font-size: 0.9em; /* Ukuran font lebih kecil untuk mobile */
+        font-size: 0.9em;
     }
 
     .cta {
-        font-size: 0.9em; /* Ukuran font lebih kecil untuk mobile */
+        font-size: 0.9em;
     }
 
     .order-btn {
-        padding: 8px 16px; /* Padding lebih kecil untuk mobile */
-        font-size: 0.9em; /* Ukuran font lebih kecil untuk mobile */
+        padding: 8px 16px;
+        font-size: 0.9em;
     }
 
     footer {
@@ -215,7 +251,7 @@ footer a:hover {
     }
 
     footer a {
-        font-size: 0.9em; /* Ukuran font lebih kecil untuk mobile */
+        font-size: 0.9em;
     }
 
     .modal-content {
@@ -223,15 +259,15 @@ footer a:hover {
     }
 
     .modal-content img {
-        width: 60px; /* Ukuran gambar lebih kecil untuk mobile */
+        width: 60px;
         height: 60px;
     }
 
     .modal-content h2 {
-        font-size: 1.2em; /* Ukuran font lebih kecil untuk mobile */
+        font-size: 1.2em;
     }
 
     .modal-content p {
-        font-size: 0.8em; /* Ukuran font lebih kecil untuk mobile */
+        font-size: 0.8em;
     }
 }
